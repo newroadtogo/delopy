@@ -1,0 +1,24 @@
+body {
+  min-height: 75rem;
+  background-color: lightgray !important;
+}
+
+.jumbotron {
+  background-color: white !important;
+  padding: 32px;
+}
+
+.navbar-brand {
+  font-size: 2.5rem !important;
+  padding: 0;
+}
+
+.jumbotron h3 {
+  color:#343a40 !important
+}
+
+.list-group-item {
+  padding-left: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

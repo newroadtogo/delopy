@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Catelog App</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='catelog.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="#">Catelog App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="btn btn-primary" href="#">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <main role="main" class="container">
+      <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-4 border-right">
+              <h3><strong>Categories</strong></h3>
+              <ul class="list-group">
+                  {% for category in categories%}
+                  <li class="list-group-item border-0"><a href="#"><strong>{{ category.name }}</strong></a></li>
+                  {% endfor %}
+              </ul>
+            </div>
+            <div class="col-sm-8 border-left">
+              <h3><strong>Latest Items</strong></h3>
+              <ul class="list-group">
+                {% for item in latest_items%}
+                <li class="list-group-item border-0">
+                  <a href="#"><strong>{{ item.name }}</strong></a>
+                  <span class='small font-italic'>({{ item.category.name }})</span>
+                </li>
+                {% endfor %}
+            </ul>
+            </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='jquery-slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+  </body>
+</html>

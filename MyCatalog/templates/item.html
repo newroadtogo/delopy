@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3><strong>{{ item.name }}</strong></h3>
+<p class="lead">{{ item.info }}</p>
+{% if current_user.is_authenticated and item.user_id==current_user.id %}
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-1 border-right">
+          <a href="{{ url_for('edit_item', item_name=item.name) }}"><strong>Edit</strong></a>
+        </div>
+        <div class="col-sm-11 border-left">
+          <a href="{{ url_for('delete_item', item_name=item.name) }}"><strong>Delete</strong></a>
+        </div>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}
+
+
+

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-4 border-right">
+      <h3><strong>Categories</strong></h3>
+      <ul class="list-group">
+          {% for category in categories%}
+          <li class="list-group-item border-0">
+            <a href="{{ url_for('category_items', category_name=category.name) }}">
+              <strong>{{ category.name }}</strong>
+            </a>
+          </li>
+          {% endfor %}
+      </ul>
+    </div>
+    <div class="col-sm-8 border-left">
+      {% if current_user.is_authenticated %}
+        <ul class="list-group">
+          <li class="list-group-item border-0">
+            <a href="{{ url_for('add_item', item=None) }}"><strong>Add Item</strong></a>
+          </li>
+        </ul>
+      {% endif %}
+      <h3><strong>{{current_category}} Items ({{current_category_items|length}} items)</strong></h3>
+      <ul class="list-group">
+        {% for item in current_category_items%}
+        <li class="list-group-item border-0">
+          <a href="{{ url_for('item', category_name=item.category.name, item_name=item.name) }}"><strong>{{ item.name }}</strong></a>
+          <span class='small font-italic'>({{ item.category.name }})</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+</div>
+{% endblock %}
+
+
+
